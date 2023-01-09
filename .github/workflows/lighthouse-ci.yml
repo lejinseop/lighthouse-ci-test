@@ -15,5 +15,5 @@ jobs:
         run: yarn build
       - name: Run lighthouse ci
         run: |
-          yarn global add @lhci/cli@0.10.x
+          yarn dlx @lhci/cli@0.10.x
           lhci autorun --upload.target=temporary-public-storage || echo "LHCI failed!"

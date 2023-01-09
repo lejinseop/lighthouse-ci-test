@@ -9,8 +9,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: Install dependencies
         run: yarn install --immutable
+      - name: Build project
         run: yarn build
+      - name: Run lighthouse ci
         run: |
           yarn install -g @lhci/cli@0.10.x
           lhci autorun --upload.target=temporary-public-storage || echo "LHCI failed!"

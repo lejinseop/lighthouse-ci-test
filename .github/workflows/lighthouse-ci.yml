@@ -10,12 +10,10 @@ jobs:
         with:
           node-version: 18
       - name: Install dependencies
-        run: yarn install --immutable
+        run: yarn install --immutable && sudo yarn dlx @lhci/cli@0.8.x
       - name: Build project
         run: yarn build
       - name: Run lighthouse ci
-        run: |
-          sudo yarn dlx @lhci/cli@0.10.x
-          lhci autorun
+        run: lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

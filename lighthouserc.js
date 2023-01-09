@@ -12,8 +12,11 @@ module.exports = {
       }
     },
     "upload": {
-      "startServerCommand": "yarn start",
-      "target": "temporary-public-storage"
+      // "startServerCommand": "yarn start",
+      // "target": "temporary-public-storage"
+      "target": "filesystem",
+      "outputDir": './lhci_reports',
+      "reportFilenamePattern": '%%PATHNAME%%-%%DATETIME%%-report.%%EXTENSION%%'
     }
   }
 }

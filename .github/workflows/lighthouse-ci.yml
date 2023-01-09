@@ -9,7 +9,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16
-      - run: yarn install && yarn dlx -p @lhci/cli@0.8.x
+      - run: yarn install
+      - run: yarn dlx @lhci/cli@0.8.x
       - run: yarn build
       - run: lhci autorun
         env:

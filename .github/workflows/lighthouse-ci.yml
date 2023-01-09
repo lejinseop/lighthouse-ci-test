@@ -1,0 +1,16 @@
+name: Build project and run Lighthouse CI
+on: [push]
+jobs:
+  lhci:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+        run: yarn install --immutable
+        run: yarn build
+        run: |
+          yarn install -g @lhci/cli@0.10.x
+          lhci autorun --upload.target=temporary-public-storage || echo "LHCI failed!"
